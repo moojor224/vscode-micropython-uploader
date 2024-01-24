@@ -1,0 +1,24 @@
+table.ports {
+    border-collapse: collapse;
+    border: 3px solid #474747;
+}
+
+table.ports label {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+table.ports thead label {
+    background-color: #191919;
+    border-bottom: 3px solid #474747;
+}
+
+table.ports td {
+    padding: 5px;
+    min-width: 50px;
+}
+
+table.ports tbody label:nth-child(even) {
+    background-color: #fff2;
+}
