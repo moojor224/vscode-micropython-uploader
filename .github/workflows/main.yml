@@ -57,7 +57,7 @@ jobs:
         uses: actions/cache/restore@v3
         id: restore-cache
         with:
-            path: /home/runner/work/html-to-js/html-to-js/node_modules
+            path: /home/runner/work/vscode-micropython-uploader/vscode-micropython-uploader/node_modules
             key: ${{ runner.os }}-${{ steps.generate-hash.outputs.CACHE_HASH }}
           
       - name: Install vsce
@@ -67,13 +67,13 @@ jobs:
         uses: actions/cache/save@v3
         id: save-cache
         with:
-          path: /home/runner/work/html-to-js/html-to-js/node_modules
+          path: /home/runner/work/vscode-micropython-uploader/vscode-micropython-uploader/node_modules
           key: ${{ runner.os }}-${{ steps.generate-hash.outputs.CACHE_HASH }}
 
       - name: Package Extension
         run: |
           echo ${{ runner.os }}-${{ steps.generate-hash.outputs.CACHE_HASH }}
-          npx @vscode/vsce package -o "./html-to-js-${{ steps.package-version.outputs.current-version}}.vsix"
+          npx @vscode/vsce package -o "./vscode-micropython-uploader-${{ steps.package-version.outputs.current-version}}.vsix"
         
       - name: Push Tags
         run: |
@@ -83,7 +83,7 @@ jobs:
       - name: GitHub Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "./html-to-js-*"
+          artifacts: "./vscode-micropython-uploader-*"
           bodyFile: ${{ github.workspace }}-CHANGELOG.txt
           tag: ${{ steps.package-version.outputs.current-version}}
           prerelease: false
